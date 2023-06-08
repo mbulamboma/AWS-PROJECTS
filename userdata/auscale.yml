@@ -1,0 +1,14 @@
+version: 0.2
+  
+phases: 
+  build:
+    commands: 
+      # Get the instance IDs of all instances in the current Auto Scaling group
+      - INSTANCE_IDS=$(aws autoscaling describe-auto-scaling-instances --query "AutoScalingInstances[?AutoScalingGroupName=='helios_backend_autoscaling'].InstanceId" --output text)
+      # Set the desired capacity to double the current capacity
+      - CURRENT_CAPACITY=$(aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names helios_backend_autoscaling --query "AutoScalingGroups[0].Instances[?HealthStatus=='Healthy'&&LifecycleState=='InService'].InstanceId" --output text | wc -w)
+      - NEW_CAPACITY=$(($CURRENT_CAPACITY * 2))
+      - aws autoscaling set-desired-capacity --auto-scaling-group-name helios_backend_autoscaling --desired-capacity $NEW_CAPACITY
+      - sleep 3000 
+      # Reset desired capacity to 1
+      - aws autoscaling set-desired-capacity --auto-scaling-group-name helios_backend_autoscaling --desired-capacity 1

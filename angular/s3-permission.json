@@ -1,0 +1,15 @@
+{
+    "Id": "Policy1683366493848",
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Stmt1683366337065",
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::helios.chida-app.com",
+        "Principal": "*"
+      }
+    ]
+  }

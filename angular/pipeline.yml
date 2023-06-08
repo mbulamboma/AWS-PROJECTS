@@ -1,0 +1,17 @@
+version: 0.2
+ 
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    
+  pre_build:
+    commands:
+      - npm install -g @angular/cli
+      - npm install --save-dev @angular/cli@latest
+      - npm install 
+  build:
+    commands:
+      - ng build   
+      - aws cloudfront create-invalidation --distribution-id E1DP9WNRGWFV5X --paths "/*"
+      - aws s3 sync dist/fuel-consumption-ft s3://helios.chida-app.com/ --delete
