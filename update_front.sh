@@ -13,7 +13,7 @@ cd /home/ec2-user/
 rm -rf /home/ec2-user/FuelConsumptionFT/
 
 FuelConsumptionFT
-git clone https://oauth2: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@github.com/Fuel-Consumption-plateform/FuelConsumptionFT.git || true
+git clone https://oauth2:xxxxxx@github.com/Fuel-Consumption-plateform/FuelConsumptionFT.git || true
 
 # Change to the project directory
 cd /home/ec2-user/FuelConsumptionFT/
