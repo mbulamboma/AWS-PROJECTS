@@ -19,7 +19,7 @@ sudo runuser -l  ec2-user -c 'npm install -g pm2'
 # deploying code
 cd /home/ec2-user/ 
 rm -rf /home/ec2-user/KumbaBackend/
-sudo runuser -l  ec2-user -c 'git clone https://oauth2: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@github.com/KumbaDevTeam/KumbaBackend.git'
+sudo runuser -l  ec2-user -c 'git clone https://oauth2:xxxxxx@github.com/KumbaDevTeam/KumbaBackend.git'
 
 # move to the downloaded folder
 
